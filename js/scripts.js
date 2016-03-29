@@ -1,6 +1,7 @@
 var input;
 var output;
 var inputArray = [];
+var outputArray = [];
 var guess;
 
 $(function() {
@@ -9,13 +10,24 @@ $(function() {
     input = $("#item1").val();
     inputArray = input.split("");
 
-    for (var index = 0; index < inputArray.length; index +=1) {
-      if (inputArray[index] === "a" || inputArray[index] === "e" || inputArray[index] === "i" || inputArray[index] === "o" || inputArray[index] === "u"){
-        inputArray[index] = "-";
-      }
-    }
+    outputArray = inputArray.map(function(letter){
+        if (letter === "a" || letter === "e" || letter === "i" || letter === "o" || letter === "u")
+        {
+          return "-";
+        } else {
+          return letter;
+        }
+    });
+    console.log(outputArray);
+
+    // for (var index = 0; index < inputArray.length; index +=1) {
+    //   if (inputArray[index] === "a" || inputArray[index] === "e" || inputArray[index] === "i" || inputArray[index] === "o" || inputArray[index] === "u")
+    //   {
+    //     inputArray[index] = "-";
+    //   }
+    // }
     $("#input").hide();
-    $(".output").append(inputArray);
+    $(".output").append(outputArray);
     $(".output").show();
     console.log(inputArray);
   });
